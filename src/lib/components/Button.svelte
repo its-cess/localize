@@ -1,16 +1,23 @@
 <script>
 	export let label;
 	export let style = 'primary';
+	export let size = 'medium';
 	export let isAnimated = false;
+	export let onClick = () => {};
 </script>
 
 <button
-	class="flex justify-center items-center text-2xl w-36 whitespace-nowrap rounded-lg px-5 py-2 font-quicksand shadow-sm"
+	on:click|preventDefault={() => onClick()}
+	class="flex justify-center items-center whitespace-nowrap rounded-lg font-quicksand"
 	class:primary={style === 'primary'}
 	class:secondary={style === 'secondary'}
 	class:destructive={style === 'destructive'}
 	class:outline={style === 'outline'}
 	class:textOnly={style === 'textOnly'}
+	class:textOnlyDestructive={style === 'textOnlyDestructive'}
+	class:small={size === 'small'}
+	class:medium={size === 'medium'}
+	class:large={size === 'large'}
 	class:isAnimated
 >
 	{label}
@@ -22,10 +29,17 @@
 		@apply bg-carrotOrange outline-none;
 	}
 
+	.primary:hover {
+		@apply text-aqua;
+	}
+
 	.secondary {
 		@apply bg-whisper text-aqua;
 	}
 
+	.secondary:hover {
+		@apply text-carrotOrange;
+	}
 	.destructive {
 		@apply bg-scarlet text-naplesYellow;
 	}
@@ -36,6 +50,21 @@
 
 	.textOnly {
 		@apply bg-transparent text-xl text-daisyBush shadow-none outline-none hover:underline;
+	}
+
+	.textOnlyDestructive {
+		@apply bg-transparent text-scarlet underline hover:no-underline;
+	}
+
+	.small {
+		@apply my-2 w-24 px-2 py-1 text-base;
+	}
+
+	.medium {
+		@apply my-5 w-28 px-3 py-2 text-lg;
+	}
+	.large {
+		@apply my-6 w-44 px-5 py-3 text-2xl;
 	}
 
 	.isAnimated {

@@ -8,7 +8,7 @@ module.exports = {
 		},
 		extend: {
 			boxShadow: {
-				colored: '0px 7px 16px rgba(127, 91, 220, 0.002)',
+				colored: '0px 7px 16px rgba(28, 118, 143, 0.3)',
 				coloredHover: '0px 16px 25px rgba(28, 118, 143, 0.3)',
 				slidePanel: '-4px 0px 44px rgba(0, 0, 0, 0.25)',
 				tableRow: '0px 0px 6px rgba(0, 0, 0, 0.16)'
@@ -24,6 +24,11 @@ module.exports = {
 				scarlet: '#f72f45',
 				silver: '#C0C0C0',
 				whisper: '#F9F4F9'
+			},
+			zIndex: {
+				modal: 999,
+				slidePanel: 998,
+				overylay: 997
 			}
 		}
 	},

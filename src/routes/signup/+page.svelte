@@ -1,8 +1,9 @@
 <script>
+	import Button from '$lib/components/Button.svelte';
 	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 </script>
 
-<div class="flex flex-col mx-auto w-1/2 bg-silver rounded-lg p-10 mt-32 shadow-lg">
+<div class="flex flex-col form-container w-1/2">
 	<h1 class="text-4xl">Signup</h1>
 	<label for="firstName">First Name</label>
 	<input type="text" id="firstName" name="firstName" placeholder="John" />
@@ -12,13 +13,15 @@
 	<input type="email" id="email" name="email" placeholder="johnsmith@example.com" />
 	<label for="password">Password</label>
 	<input type="password" id="password" name="password" placeholder="password" />
+	<Button label="Signup" isAnimated={true} />
 
-	<a
-		href="/signup/merchants"
-		class="mt-5 text-lg font-quicksand text-aqua hover:underline flex items-center gap-1"
-	>
+	<a href="/signup/merchants" class="page-links mt-5 text-lg text-aqua">
 		Register as a merchant?
 		<ArrowUpRightSquare height={13} width={13} fill="#1C768F" />
+	</a>
+	<a href="/login" class="page-links text-base text-monsoon">
+		Already have an account?
+		<ArrowUpRightSquare height={10} width={10} fill="#777878" />
 	</a>
 </div>
 
@@ -27,6 +30,9 @@
 		@apply mb-1 mt-5;
 	}
 
+	.page-links {
+		@apply flex items-center gap-1 font-quicksand hover:underline;
+	}
 	::placeholder {
 		@apply text-silver opacity-40;
 	}

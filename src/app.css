@@ -27,4 +27,13 @@
 		@apply border-2 border-carrotOrange outline-none;
 	}
 
+	svg {
+		@apply fill-current;
+	}
+}
+
+@layer components {
+	.form-container {
+		@apply mx-auto bg-whisper rounded-lg p-10 mt-32 shadow-colored;
+	}
 }

@@ -10,8 +10,8 @@
 			profits with our user-friendly platform
 		</p>
 		<div class="flex justify-center gap-10 my-8">
-			<a href="/signup"><Button label="Signup" style="primary" isAnimated={true} /></a>
-			<a href="/signin"><Button label="Login" style="secondary" isAnimated={true} /></a>
+			<a href="/signup"><Button label="Signup" style="primary" size="large" isAnimated={true} /></a>
+			<a href="/login"><Button label="Login" style="secondary" size="large" isAnimated={true} /></a>
 		</div>
 	</div>
 
