@@ -2,7 +2,7 @@
 	import Button from '$lib/components/Button.svelte';
 </script>
 
-<main class="center bg-silver h-screen">
+<main class="center h-screen">
 	<div class="center">
 		<h1 class="text-5xl">Welcome to Localize!</h1>
 		<p>
@@ -36,7 +36,6 @@
 		@apply my-8;
 	}
 
-	h1,
 	h2 {
 		@apply font-quicksand;
 	}
