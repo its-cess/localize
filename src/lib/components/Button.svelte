@@ -5,7 +5,7 @@
 </script>
 
 <button
-	class="flex items-center whitespace-nowrap rounded-lg px-5 py-2 font-quicksand shadow-sm"
+	class="flex justify-center items-center text-2xl w-36 whitespace-nowrap rounded-lg px-5 py-2 font-quicksand shadow-sm"
 	class:primary={style === 'primary'}
 	class:secondary={style === 'secondary'}
 	class:destructive={style === 'destructive'}

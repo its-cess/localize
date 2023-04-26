@@ -1,21 +1,47 @@
 <script>
-	import SearchIcon from '$lib/icons/SearchIcon.svelte';
+	import Button from '$lib/components/Button.svelte';
 </script>
 
-<main class="flex-col bg-silver h-screen">
-	<h1 class="text-4xl">Welcome to <span class="text-5xl font-quicksand">Localize</span></h1>
-	<p class="text-2xl mt-2">Please enter your location to support local merchants!</p>
-	<div class="w-full h-28 mt-5">
-		<input type="search" class="w-1/2 rounded-l-lg" />
-		<button class="bg-carrotOrange py-3 px-5 rounded-r-lg">
-			<SearchIcon />
-		</button>
+<main class="center bg-silver h-screen">
+	<div class="center">
+		<h1 class="text-5xl">Welcome to Localize!</h1>
+		<p>
+			Enhance your business's visibility with ease, expand your customer base, and increase your
+			profits with our user-friendly platform
+		</p>
+		<div class="flex justify-center gap-10 my-8">
+			<a href="/signup"><Button label="Signup" style="primary" isAnimated={true} /></a>
+			<a href="/signin"><Button label="Login" style="secondary" isAnimated={true} /></a>
+		</div>
+	</div>
+
+	<div class="center">
+		<h2 class="text-3xl">Why Choose Us?</h2>
+		<p>
+			Our platform aims to be as inclusive as possible. All businesses can create an account and
+			start selling locally today! We know the challenges that small business owners can face when
+			trying to access an internet-based market -- the costs are high, the learning curve is steep,
+			and maintenance can be exhausting. With our platform, you get to reach out to your local
+			customers in an easy way without the hassle.
+		</p>
 	</div>
 </main>
 
 <style lang="postcss">
-	main,
-	div {
-		@apply flex items-center justify-center;
+	.center {
+		@apply flex flex-col items-center justify-center px-20;
+	}
+
+	div.center {
+		@apply my-8;
+	}
+
+	h1,
+	h2 {
+		@apply font-quicksand;
+	}
+
+	p {
+		@apply my-4 text-center text-xl;
 	}
 </style>
