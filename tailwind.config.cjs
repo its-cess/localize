@@ -7,6 +7,12 @@ module.exports = {
 			quicksand: ['Quicksand', 'sans-serif']
 		},
 		extend: {
+			boxShadow: {
+				colored: '0px 7px 16px rgba(127, 91, 220, 0.002)',
+				coloredHover: '0px 16px 25px rgba(28, 118, 143, 0.3)',
+				slidePanel: '-4px 0px 44px rgba(0, 0, 0, 0.25)',
+				tableRow: '0px 0px 6px rgba(0, 0, 0, 0.16)'
+			},
 			colors: {
 				aqua: '#1C768F',
 				carrotOrange: '#FA991C',
@@ -14,6 +20,8 @@ module.exports = {
 				iceBlue: '#9CF6F6',
 				lavenderIndigo: '#8657E1',
 				monsoon: '#777878',
+				naplesYellow: '#f4d35e',
+				scarlet: '#f72f45',
 				silver: '#C0C0C0',
 				whisper: '#F9F4F9'
 			}

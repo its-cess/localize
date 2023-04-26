@@ -2,7 +2,7 @@
 	import ShoppingCart from '../icons/ShoppingCart.svelte';
 </script>
 
-<div>
-	<h1>Navbar</h1>
+<nav class="flex justify-between items-center p-10 bg-carrotOrange shadow-lg">
+	<a href="/" class="text-4xl font-quicksand">Localize</a>
 	<ShoppingCart />
-</div>
+</nav>

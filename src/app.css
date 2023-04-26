@@ -8,4 +8,12 @@
 	body {
 		@apply font-poppins;
 	}
+
+	input[type='search'] {
+		@apply h-12 font-quicksand text-lg px-4;
+	}
+
+	input[type="search"]:focus {
+		@apply border-2 border-carrotOrange outline-none;
+	}
 }
