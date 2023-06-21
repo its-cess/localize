@@ -1,46 +1,36 @@
 <script>
 	import Button from '$lib/components/Button.svelte';
+	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 </script>
 
-<main class="center h-screen">
-	<div class="center">
+<main class="center mt-60 sm:mt-72">
+	<div class="center px-3">
 		<h1 class="text-5xl">Welcome to Localize!</h1>
-		<p>
-			Enhance your business's visibility with ease, expand your customer base, and increase your
-			profits with our user-friendly platform
-		</p>
-		<div class="flex justify-center gap-10 my-8">
-			<a href="/signup"><Button label="Signup" style="primary" size="large" isAnimated={true} /></a>
-			<a href="/login"><Button label="Login" style="secondary" size="large" isAnimated={true} /></a>
+		<p class="my-4 text-center text-xl">Please enter your location and support local merchants!</p>
+		<div class="flex items-center gap-1 sm:gap-3 mt-5">
+			<input
+				type="search"
+				placeholder="Enter city or postal code"
+				class="outline w-[350px] sm:w-[400px] h-11"
+			/>
+			<Button label="Search" isAnimated={true} />
 		</div>
-	</div>
-
-	<div class="center">
-		<h2 class="text-3xl">Why Choose Us?</h2>
-		<p>
-			Our platform aims to be as inclusive as possible. All businesses can create an account and
-			start selling locally today! We know the challenges that small business owners can face when
-			trying to access an internet-based market -- the costs are high, the learning curve is steep,
-			and maintenance can be exhausting. With our platform, you get to reach out to your local
-			customers in an easy way without the hassle.
-		</p>
+		<a href="/merchants" class="page-links mt-5 text-lg text-aqua">
+			Interested in becoming a merchant? Learn more
+			<ArrowUpRightSquare height={13} width={13} fill="#1C768F" />
+		</a>
 	</div>
 </main>
 
 <style lang="postcss">
 	.center {
-		@apply flex flex-col items-center justify-center px-20;
+		@apply flex flex-col items-center justify-center text-center;
 	}
 
-	div.center {
-		@apply my-8;
+	.page-links {
+		@apply flex items-center gap-1 font-quicksand hover:underline;
 	}
-
-	h2 {
-		@apply font-quicksand;
-	}
-
-	p {
-		@apply my-4 text-center text-xl;
+	::placeholder {
+		@apply text-silver opacity-70;
 	}
 </style>
