@@ -13,7 +13,7 @@
 			<a href="/signup/new-merchant" class="bg-carrotOrange outline-none hover:text-aqua"
 				>Signup
 			</a>
-			<a href="/login" class="bg-whisper text-aqua hover:text-carrotOrange">Login</a>
+			<a href="/login/merchant" class="bg-whisper text-aqua hover:text-carrotOrange">Login</a>
 		</div>
 	</div>
 

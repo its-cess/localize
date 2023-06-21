@@ -8,16 +8,20 @@
 </script>
 
 <nav class="flex justify-between items-center p-4 bg-carrotOrange shadow-lg">
-	<a href="/" class="text-4xl font-quicksand hover:text-aqua">Localize</a>
-	<Button
-		label=""
-		style="primary"
-		onClick={() => {
-			isCartOpen = true;
-		}}
-	>
-		<ShoppingCart />
-	</Button>
+	<a href="/" class="text-4xl">Localize</a>
+	<div class="flex items-center">
+		<!-- change login to say logout if logged in, login if no user -->
+		<a href="/login/user" class="text-xl">Login</a>
+		<Button
+			label=""
+			style="primary"
+			onClick={() => {
+				isCartOpen = true;
+			}}
+		>
+			<ShoppingCart />
+		</Button>
+	</div>
 
 	<!-- SLIDE PANEL -->
 	{#if isCartOpen}
@@ -30,3 +34,9 @@
 		</SlidePanel>
 	{/if}
 </nav>
+
+<style lang="postcss">
+	a {
+		@apply font-quicksand hover:text-aqua;
+	}
+</style>

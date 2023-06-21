@@ -15,13 +15,13 @@
 	<input type="password" id="password" name="password" placeholder="password" />
 	<Button label="Signup" isAnimated={true} />
 
-	<a href="/signup/merchants" class="page-links mt-5 text-lg text-aqua">
+	<a href="/signup/new-merchant" class="page-links mt-5 text-lg text-aqua">
 		Register as a merchant?
-		<ArrowUpRightSquare height={13} width={13} fill="#1C768F" />
+		<ArrowUpRightSquare height={13} width={13} />
 	</a>
-	<a href="/login" class="page-links text-base text-monsoon">
+	<a href="/login/user" class="page-links text-base text-monsoon">
 		Already have an account?
-		<ArrowUpRightSquare height={10} width={10} fill="#777878" />
+		<ArrowUpRightSquare height={10} width={10} />
 	</a>
 </div>
 

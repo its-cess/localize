@@ -17,7 +17,7 @@
 		</div>
 		<a href="/merchants" class="page-links mt-5 text-lg text-aqua">
 			Interested in becoming a merchant? Learn more
-			<ArrowUpRightSquare height={13} width={13} fill="#1C768F" />
+			<ArrowUpRightSquare height={13} width={13} />
 		</a>
 	</div>
 </main>

@@ -21,7 +21,7 @@
 			body: JSON.stringify(loginFields)
 		});
 
-		if (response.status === 200) {
+		if (response.ok) {
 			console.log('Logged In');
 			await response.json();
 			// if successful, add user to store? set cookies/localStorage?
@@ -37,7 +37,7 @@
 
 <div class="flex flex-col form-container w-1/2">
 	<form on:submit|preventDefault={handleSubmit} class="flex flex-col">
-		<h1 class="text-4xl">Login</h1>
+		<h1 class="text-4xl">User Login</h1>
 		<label for="email">Email Address</label>
 		<input type="email" id="email" name="email" placeholder="mail@example.com" bind:value={email} />
 		<label for="password">Password</label>
@@ -52,7 +52,7 @@
 	</form>
 
 	<a
-		href="/signup"
+		href="/signup/new-user"
 		class="mt-5 text-lg font-quicksand text-aqua hover:underline flex items-center gap-1"
 	>
 		Need an account?
