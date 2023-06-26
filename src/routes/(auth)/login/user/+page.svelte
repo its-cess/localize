@@ -1,5 +1,5 @@
 <script>
-	import { loginUser } from '$lib/stores/ClientStore';
+	import { loginUser } from '$lib/stores/UserStore';
 
 	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 

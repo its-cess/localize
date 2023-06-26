@@ -1,5 +1,5 @@
 <script>
-	import { user, logoutUser } from '$lib/stores/ClientStore';
+	import { user, logoutUser } from '$lib/stores/UserStore';
 	import ShoppingCart from '../icons/ShoppingCart.svelte';
 	import Button from './Button.svelte';
 	import Cart from './Cart.svelte';
