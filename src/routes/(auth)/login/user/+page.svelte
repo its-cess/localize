@@ -1,37 +1,18 @@
 <script>
-	import baseUrl from '$lib/utils/baseUrl';
-	import { goto } from '$app/navigation';
+	import { loginUser } from '$lib/stores/ClientStore';
 
 	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 
 	let email;
 	let password;
 
-	const handleSubmit = async () => {
+	const handleSubmit = () => {
 		const loginFields = {
 			email,
 			password
 		};
 
-		const response = await fetch(`${baseUrl}/auth/signin`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(loginFields)
-		});
-
-		if (response.ok) {
-			console.log('Logged In');
-			await response.json();
-			// if successful, add user to store? set cookies/localStorage?
-			// navigate to user homepage?
-			goto('/');
-		} else {
-			// add alert message component that shows that they couldn't be logged in.
-			console.log('Could not log you in. Please try again.');
-			throw new Error(response.statusText);
-		}
+		loginUser(loginFields);
 	};
 </script>
 

@@ -1,17 +1,25 @@
 <script>
+	import { user, logoutUser } from '$lib/stores/ClientStore';
 	import ShoppingCart from '../icons/ShoppingCart.svelte';
 	import Button from './Button.svelte';
 	import Cart from './Cart.svelte';
 	import SlidePanel from './SlidePanel.svelte';
 
 	let isCartOpen = false;
+
+	const handleClick = () => {
+		logoutUser();
+	};
 </script>
 
 <nav class="flex justify-between items-center p-4 bg-carrotOrange shadow-lg">
 	<a href="/" class="text-4xl">Localize</a>
 	<div class="flex items-center">
-		<!-- change login to say logout if logged in, login if no user -->
-		<a href="/login/user" class="text-xl">Login</a>
+		{#if $user}
+			<button on:click={handleClick} class="logout-btn text-xl">Logout</button>
+		{:else}
+			<a href="/login/user" class="text-xl">Login</a>
+		{/if}
 		<Button
 			label=""
 			style="primary"
@@ -36,7 +44,8 @@
 </nav>
 
 <style lang="postcss">
-	a {
+	a,
+	.logout-btn {
 		@apply font-quicksand hover:text-aqua;
 	}
 </style>
