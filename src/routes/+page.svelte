@@ -15,6 +15,7 @@
 			/>
 			<Button label="Search" isAnimated={true} />
 		</div>
+		<!-- TODO: remove merchants signup page -->
 		<!-- <a href="/merchants" class="page-links mt-5 text-lg text-aqua">
 			Interested in becoming a merchant? Learn more
 			<ArrowUpRightSquare height={13} width={13} />

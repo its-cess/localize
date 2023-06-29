@@ -28,6 +28,7 @@
 		</p>
 	</div>
 
+	<!-- TODO: remove buttons for auth pages here. -->
 	<div class="flex justify-center gap-10">
 		<Button
 			label="Signup"

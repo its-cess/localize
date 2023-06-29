@@ -1,9 +1,10 @@
 <script>
 	import { loginUser } from '$lib/stores/ClientStore';
-
 	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 
-	export let isSigningUp = false;
+	export let isUser;
+	export let isMerchant;
+	export let isSigningUp;
 
 	let email;
 	let password;
@@ -34,8 +35,12 @@
 </form>
 
 <button
+	{isUser}
+	{isMerchant}
 	{isSigningUp}
 	on:click={() => {
+		isUser = true;
+		isMerchant = false;
 		isSigningUp = true;
 	}}
 	class="mt-5 text-lg font-quicksand text-aqua hover:underline flex items-center gap-1"

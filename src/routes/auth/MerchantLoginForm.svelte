@@ -2,6 +2,10 @@
 	import { loginMerchant } from '$lib/stores/ClientStore';
 	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 
+	export let isUser;
+	export let isMerchant;
+	export let isSigningUp;
+
 	let email;
 	let password;
 
@@ -30,13 +34,20 @@
 	<button type="submit" class="submit-button">Login</button>
 </form>
 
-<a
-	href="/signup/new-merchant"
+<!--TODO: add logic for props to change if logging in/signing up and if theyre user or merchant. -->
+<button
+	{isUser}
+	{isMerchant}
+	{isSigningUp}
+	on:click={() => {
+		isUser = false;
+		isMerchant = true;
+		isSigningUp = true;
+	}}
 	class="mt-5 text-lg font-quicksand text-aqua hover:underline flex items-center gap-1"
->
-	Need an account?
+	>Need an account?
 	<ArrowUpRightSquare height={13} width={13} />
-</a>
+</button>
 
 <style lang="postcss">
 	.submit-button {

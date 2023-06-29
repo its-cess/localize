@@ -4,26 +4,19 @@
 	import UserSignupForm from './UserSignupForm.svelte';
 	import MerchantSignupForm from './MerchantSignupForm.svelte';
 
-	//export let isUser;
+	let isUser;
+	let isMerchant;
 	let isSigningUp;
 </script>
 
-Auth Component
 <div class="flex flex-col form-container w-1/2">
-	{#if !isSigningUp}
-		<UserLoginForm bind:isSigningUp />
+	{#if isUser && isSigningUp}
+		<UserSignupForm bind:isUser bind:isMerchant bind:isSigningUp />
+	{:else if isMerchant && isSigningUp}
+		<MerchantSignupForm bind:isUser bind:isMerchant bind:isSigningUp />
+	{:else if isMerchant && !isSigningUp}
+		<MerchantLoginForm bind:isUser bind:isMerchant bind:isSigningUp />
 	{:else}
-		<UserSignupForm />
+		<UserLoginForm bind:isUser bind:isMerchant bind:isSigningUp />
 	{/if}
-	<!-- {#if isUser}
-		{#if !isSigningUp}
-			<UserLoginForm isNewUser={isSigningUp} />
-		{:else}
-			<UserSignupForm />
-		{/if}
-	{:else if !isUser && !isSigningUp}
-		<MerchantLoginForm />
-	{:else}
-		<MerchantSignupForm />
-	{/if} -->
 </div>

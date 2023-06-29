@@ -1,6 +1,10 @@
 <script>
 	import Button from '$lib/components/Button.svelte';
 	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
+
+	export let isUser;
+	export let isMerchant;
+	export let isSigningUp;
 </script>
 
 <h1 class="text-4xl">User Signup</h1>
@@ -14,14 +18,33 @@
 <input type="password" id="password" name="password" placeholder="password" />
 <Button label="Signup" isAnimated={true} />
 
-<a href="/signup/new-merchant" class="page-links mt-5 text-lg text-aqua">
-	Register as a merchant?
+<button
+	{isUser}
+	{isMerchant}
+	{isSigningUp}
+	on:click={() => {
+		isUser = true;
+		isMerchant = false;
+		isSigningUp = false;
+	}}
+	class="page-links text-base text-monsoon"
+	>Already have an account?
 	<ArrowUpRightSquare height={13} width={13} />
-</a>
-<a href="/login/user" class="page-links text-base text-monsoon">
-	Already have an account?
-	<ArrowUpRightSquare height={10} width={10} />
-</a>
+</button>
+
+<button
+	{isUser}
+	{isMerchant}
+	{isSigningUp}
+	on:click={() => {
+		isUser = false;
+		isMerchant = true;
+		isSigningUp = true;
+	}}
+	class="page-links mt-5 text-lg text-aqua"
+	>Register as a merchant?
+	<ArrowUpRightSquare height={13} width={13} />
+</button>
 
 <style lang="postcss">
 	label {

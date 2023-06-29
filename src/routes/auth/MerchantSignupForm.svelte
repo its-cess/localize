@@ -1,5 +1,10 @@
 <script>
 	import Button from '$lib/components/Button.svelte';
+	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
+
+	export let isUser;
+	export let isMerchant;
+	export let isSigningUp;
 </script>
 
 <h1 class="text-4xl">Merchant Registration</h1>
@@ -45,7 +50,22 @@
 	</div>
 </div>
 <div class="flex justify-end">
-	<Button label="Register" size="large" isAnimated={true} />
+	<div class="flex flex-col">
+		<Button label="Register" size="large" isAnimated={true} />
+		<button
+			{isUser}
+			{isMerchant}
+			{isSigningUp}
+			on:click={() => {
+				isUser = false;
+				isMerchant = true;
+				isSigningUp = false;
+			}}
+			class="page-links text-base text-monsoon"
+			>Already a merchant?
+			<ArrowUpRightSquare height={13} width={13} />
+		</button>
+	</div>
 </div>
 
 <style lang="postcss">
@@ -55,6 +75,10 @@
 
 	.info-section {
 		@apply flex flex-col;
+	}
+
+	.page-links {
+		@apply flex items-center gap-1 font-quicksand hover:underline;
 	}
 
 	label {

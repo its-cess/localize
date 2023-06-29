@@ -4,9 +4,7 @@ import baseUrl from "$lib/utils/baseUrl";
 
 export const client = writable({});
 
-// TODO: a lot of the MerchantStore/UserStore is similar:
-// Find a way to combine then and pick which functions to run based on Merchant/User???
-
+//TODO: add Loader/Spinner component when waiting for login to occur.
 export const loginMerchant = async (loginInfo) => {
   console.log("Merchant Login Running");
   const response = await fetch(`${baseUrl}/merchants/auth/signin`, {
@@ -52,6 +50,6 @@ export const loginUser = async (loginInfo) => {
 }
 
 export const logoutClient = () => {
-  client.set();
+  client.set(null);
   goto('/');
 }
