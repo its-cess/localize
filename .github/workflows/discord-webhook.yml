@@ -1,0 +1,25 @@
+name: Send message to Discord
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send_message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Get commit info
+        id: commit_info
+        run: |
+          echo "TITLE=$(git log --format=%s -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
+          echo "DESCRIPTION=$(git log --format=%b -n 1 ${{ github.event.after }})" >> $GITHUB_ENV
+          echo "URL=$GITHUB_SERVER_URL/${{ github.repository }}" >> $GITHUB_ENV
+          echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+          echo "IMAGE_URL=https://imgs.search.brave.com/T1TmncdbQgcFSsIzp5gZ4jKUgb_A0Xo6g8UNAzOiaR0/rs:fit:900:900:1/g:ce/aHR0cHM6Ly9jbGlw/Z3JvdW5kLmNvbS9p/bWFnZXMvZ2l0aHVi/LWxvZ28tcG5nLTcu/anBn" >> $GITHUB_ENV
+      - name: Send message to Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d "{\"sender\":\"$USERNAME\", \"avatar_url\": \"$IMAGE_URL\",\"embeds\": [{\"title\": \"New commit to the Localize repository!\", \"color\": \"14177041\", \"description\": \"$TITLE \n\n$DESCRIPTION \n\nRepository URL: $URL\"}]}" \
+               ${{ secrets.DISCORD_WEBHOOK }}
