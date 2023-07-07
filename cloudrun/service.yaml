@@ -1,0 +1,42 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+  labels:
+    cloud.googleapis.com/location: northamerica-northeast1
+  name: localize-frontend
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/maxScale: '5'
+        run.googleapis.com/client-name: gcloud
+        run.googleapis.com/client-version: 431.0.0
+        run.googleapis.com/vpc-access-connector: projects/hardy-being-387222/locations/northamerica-northeast1/connectors/cloud-run-sql-vpc
+        run.googleapis.com/vpc-access-egress: private-ranges-only
+      labels:
+        run.googleapis.com/startupProbeType: Default
+    spec:
+      containerConcurrency: 80
+      containers:
+        image: northamerica-northeast1-docker.pkg.dev/hardy-being-387222/frontend-repository/localize:0.0.1
+        ports:
+        - containerPort: 3000
+          name: http1
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+        startupProbe:
+          failureThreshold: 1
+          periodSeconds: 240
+          tcpSocket:
+            port: 3000
+          timeoutSeconds: 240
+      serviceAccountName: 967081333375-compute@developer.gserviceaccount.com
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100
