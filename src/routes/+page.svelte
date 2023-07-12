@@ -15,21 +15,12 @@
 			/>
 			<Button label="Search" isAnimated={true} />
 		</div>
-		<!-- TODO: remove merchants signup page -->
-		<!-- <a href="/merchants" class="page-links mt-5 text-lg text-aqua">
-			Interested in becoming a merchant? Learn more
-			<ArrowUpRightSquare height={13} width={13} />
-		</a> -->
 	</div>
 </main>
 
 <style lang="postcss">
 	.center {
 		@apply flex flex-col items-center justify-center text-center;
-	}
-
-	.page-links {
-		@apply flex items-center gap-1 font-quicksand hover:underline;
 	}
 	::placeholder {
 		@apply text-silver opacity-70;

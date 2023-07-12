@@ -7,7 +7,7 @@ export const client = writable({});
 //TODO: add Loader/Spinner component when waiting for login to occur.
 export const loginMerchant = async (loginInfo) => {
   console.log("Merchant Login Running");
-  const response = await fetch(`${baseUrl}/merchants/auth/signin`, {
+  const res = await fetch(`${baseUrl}/merchants/auth/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -15,21 +15,21 @@ export const loginMerchant = async (loginInfo) => {
     body: JSON.stringify(loginInfo)
   });
 
-  if (response.ok) {
-    const data = await response.json();
+  if (res.ok) {
+    const data = await res.json();
     client.set(data);
     // TODO: if successful, add user to store? set cookies/localStorage?
     goto('/dashboard');
   } else {
     // TODO: add alert message component that shows that they couldn't be logged in.
     console.log('Could not log you in. Please try again.');
-    throw new Error(response.statusText);
+    throw new Error(res.statusText);
   }
-}
+};
 
 export const loginUser = async (loginInfo) => {
   console.log("User Login Running")
-  const response = await fetch(`${baseUrl}/auth/signin`, {
+  const res = await fetch(`${baseUrl}/auth/signin`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -37,19 +37,23 @@ export const loginUser = async (loginInfo) => {
     body: JSON.stringify(loginInfo)
   });
 
-  if (response.ok) {
-    const data = await response.json();
+  if (res.ok) {
+    const data = await res.json();
     client.set(data);
     // if successful,  set cookies/localStorage?
     goto('/dashboard');
   } else {
     // add alert message component that shows that they couldn't be logged in.
     console.log('Could not log you in. Please try again.');
-    throw new Error(response.statusText);
+    throw new Error(res.statusText);
   }
-}
+};
+
+export const signupMerchant = () => {};
+
+export const signupUser = () => {};
 
 export const logoutClient = () => {
   client.set(null);
   goto('/');
-}
+};

@@ -1,15 +1,18 @@
 <script>
 	import { loginMerchant } from '$lib/stores/ClientStore';
+	import Loader from '$lib/components/Loader.svelte';
 	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 
 	export let isUser;
 	export let isMerchant;
 	export let isSigningUp;
+	let isLoading = false;
 
 	let email;
 	let password;
 
 	const handleSubmit = () => {
+		isLoading = true;
 		const loginFields = {
 			email,
 			password
@@ -31,7 +34,13 @@
 		placeholder="password"
 		bind:value={password}
 	/>
-	<button type="submit" class="submit-button">Login</button>
+	<button type="submit" class="submit-button">
+		{#if isLoading}
+			<Loader />
+		{:else}
+			Login
+		{/if}
+	</button>
 </form>
 
 <!--TODO: add logic for props to change if logging in/signing up and if theyre user or merchant. -->
