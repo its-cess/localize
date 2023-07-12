@@ -13,8 +13,9 @@
 </script>
 
 <nav class="flex justify-between items-center p-4 bg-carrotOrange shadow-lg">
-	<a href="/" class="text-4xl">Localize</a>
+	<a href="/" class="text-2xl xs:text-4xl">Localize</a>
 	<div class="flex items-center">
+		<!-- TODO: need to make links into hamburger menu on small screens.-->
 		<!-- TODO: need to fix Client state. Rendering 'Logout' when there is no user. -->
 		{#if $client}
 			<button on:click={handleClick} class="logout-btn text-xl">Logout</button>

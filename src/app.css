@@ -36,6 +36,6 @@
 
 @layer components {
 	.form-container {
-		@apply mx-auto bg-whisper rounded-lg p-10 mt-32 shadow-colored;
+		@apply mx-auto bg-whisper rounded-lg p-5 mt-32 shadow-colored;
 	}
 }

@@ -23,7 +23,7 @@
 </script>
 
 <form on:submit|preventDefault={handleSubmit} class="flex flex-col">
-	<h1 class="text-4xl">Merchant Login</h1>
+	<h1 class="text-2xl xs:text-4xl">Merchant Login</h1>
 	<label for="email">Email Address</label>
 	<input type="email" id="email" name="email" placeholder="mail@example.com" bind:value={email} />
 	<label for="password">Password</label>
@@ -53,7 +53,7 @@
 		isMerchant = true;
 		isSigningUp = true;
 	}}
-	class="mt-5 text-lg font-quicksand text-aqua hover:underline flex items-center gap-1"
+	class="mt-1 xs:mt-5 text-base xs:text-lg font-quicksand text-aqua hover:underline flex items-center gap-1"
 	>Need an account?
 	<ArrowUpRightSquare height={13} width={13} />
 </button>
@@ -62,11 +62,29 @@
 	.submit-button {
 		@apply my-5 flex w-28 translate-y-0 items-center justify-center whitespace-nowrap rounded-lg bg-carrotOrange px-3 py-2 font-quicksand text-lg shadow-colored outline-none transition-all hover:-translate-y-2 hover:text-aqua hover:shadow-coloredHover;
 	}
+
+	@media (max-width: 590px) {
+		.submit-button {
+			@apply w-full text-base;
+		}
+	}
 	label {
 		@apply mt-5;
 	}
 
+	@media (max-width: 590px) {
+		label {
+			@apply text-sm;
+		}
+	}
+
 	::placeholder {
 		@apply text-silver opacity-40;
+	}
+
+	@media (max-width: 590px) {
+		::placeholder {
+			@apply text-sm;
+		}
 	}
 </style>

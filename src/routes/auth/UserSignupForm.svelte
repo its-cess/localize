@@ -1,22 +1,33 @@
 <script>
-	import Button from '$lib/components/Button.svelte';
 	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
+	import Loader from '$lib/components/Loader.svelte';
 
 	export let isUser;
 	export let isMerchant;
 	export let isSigningUp;
+	let isLoading = false;
 </script>
 
-<h1 class="text-4xl">User Signup</h1>
-<label for="firstName">First Name</label>
-<input type="text" id="firstName" name="firstName" placeholder="John" />
-<label for="lastName">Last Name</label>
-<input type="text" id="lastName" name="lastName" placeholder="Smith" />
-<label for="email">Email Address</label>
-<input type="email" id="email" name="email" placeholder="johnsmith@example.com" />
-<label for="password">Password</label>
-<input type="password" id="password" name="password" placeholder="password" />
-<Button label="Signup" isAnimated={true} />
+<!-- TODO: add signup functionality.-->
+<form class="flex flex-col">
+	<h1 class="text-2xl xs:text-4xl">User Signup</h1>
+	<label for="firstName">First Name</label>
+	<input type="text" id="firstName" name="firstName" placeholder="John" />
+	<label for="lastName">Last Name</label>
+	<input type="text" id="lastName" name="lastName" placeholder="Smith" />
+	<label for="email">Email Address</label>
+	<input type="email" id="email" name="email" placeholder="johnsmith@example.com" />
+	<label for="password">Password</label>
+	<input type="password" id="password" name="password" placeholder="password" />
+
+	<button type="submit" class="submit-button">
+		{#if isLoading}
+			<Loader />
+		{:else}
+			Login
+		{/if}
+	</button>
+</form>
 
 <button
 	{isUser}
@@ -41,14 +52,29 @@
 		isMerchant = true;
 		isSigningUp = true;
 	}}
-	class="page-links mt-5 text-lg text-aqua"
+	class="page-links mt-1 xs:mt-5 text-base xs:text-lg text-aqua"
 	>Register as a merchant?
 	<ArrowUpRightSquare height={13} width={13} />
 </button>
 
 <style lang="postcss">
+	.submit-button {
+		@apply my-5 flex w-28 translate-y-0 items-center justify-center whitespace-nowrap rounded-lg bg-carrotOrange px-3 py-2 font-quicksand text-lg shadow-colored outline-none transition-all hover:-translate-y-2 hover:text-aqua hover:shadow-coloredHover;
+	}
+
+	@media (max-width: 590px) {
+		.submit-button {
+			@apply w-full text-base;
+		}
+	}
 	label {
 		@apply mb-1 mt-5;
+	}
+
+	@media (max-width: 590px) {
+		label {
+			@apply text-sm;
+		}
 	}
 
 	.page-links {
@@ -56,5 +82,11 @@
 	}
 	::placeholder {
 		@apply text-silver opacity-40;
+	}
+
+	@media (max-width: 590px) {
+		::placeholder {
+			@apply text-sm;
+		}
 	}
 </style>

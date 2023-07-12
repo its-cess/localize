@@ -9,14 +9,30 @@
 	let isSigningUp;
 </script>
 
-<div class="flex flex-col form-container w-1/2">
-	{#if isUser && isSigningUp}
+{#if isUser && isSigningUp}
+	<div class="form-background small-form">
 		<UserSignupForm bind:isUser bind:isMerchant bind:isSigningUp />
-	{:else if isMerchant && isSigningUp}
+	</div>
+{:else if isMerchant && isSigningUp}
+	<div class="form-background merchantForm:w-1/2">
 		<MerchantSignupForm bind:isUser bind:isMerchant bind:isSigningUp />
-	{:else if isMerchant && !isSigningUp}
+	</div>
+{:else if isMerchant && !isSigningUp}
+	<div class="form-background small-form">
 		<MerchantLoginForm bind:isUser bind:isMerchant bind:isSigningUp />
-	{:else}
+	</div>
+{:else}
+	<div class="form-background small-form">
 		<UserLoginForm bind:isUser bind:isMerchant bind:isSigningUp />
-	{/if}
-</div>
+	</div>
+{/if}
+
+<style lang="postcss">
+	.small-form {
+		@apply flex w-full flex-col xs:w-1/2;
+	}
+
+	.form-background {
+		@apply mx-auto mt-32 rounded-lg bg-whisper p-5 shadow-colored;
+	}
+</style>

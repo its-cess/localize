@@ -30,6 +30,10 @@ module.exports = {
 				slidePanel: 998,
 				overylay: 997
 			}
+		},
+		screens: {
+			'xs': '590px',
+			'merchantForm': '1100px'
 		}
 	},
 	plugins: []
