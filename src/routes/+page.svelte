@@ -20,9 +20,6 @@
 </main>
 
 <style lang="postcss">
-	.center {
-		@apply flex flex-col items-center justify-center text-center;
-	}
 	::placeholder {
 		@apply text-silver opacity-70;
 	}
