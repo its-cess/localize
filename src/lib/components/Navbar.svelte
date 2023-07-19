@@ -17,11 +17,7 @@
 	<div class="flex items-center">
 		<!-- TODO: need to make links into hamburger menu on small screens.-->
 		<!-- TODO: need to fix Client state. Rendering 'Logout' when there is no user. -->
-		{#if $client}
-			<button on:click={handleClick} class="logout-btn text-xl">Logout</button>
-		{:else}
-			<a href="/auth" class="text-xl">Login</a>
-		{/if}
+		<a href="/auth" class="text-xl">Login</a>
 		<Button
 			label=""
 			style="primary"
