@@ -58,6 +58,20 @@
 	<ArrowUpRightSquare height={13} width={13} />
 </button>
 
+<button
+	{isUser}
+	{isMerchant}
+	{isSigningUp}
+	on:click={() => {
+		isUser = false;
+		isMerchant = true;
+		isSigningUp = false;
+	}}
+	class="mt-1 xs:mt-5 text-base xs:text-lg font-quicksand text-monsoon hover:underline flex items-center gap-1"
+	>Merchant Login
+	<ArrowUpRightSquare height={13} width={13} />
+</button>
+
 <style lang="postcss">
 	.submit-button {
 		@apply my-5 flex w-28 translate-y-0 items-center justify-center whitespace-nowrap rounded-lg bg-carrotOrange px-3 py-2 font-quicksand text-lg shadow-colored outline-none transition-all hover:-translate-y-2 hover:text-aqua hover:shadow-coloredHover;
