@@ -1,30 +1,60 @@
 <script>
-	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
+	import { signupUser } from '$lib/stores/ClientStore';
 	import Loader from '$lib/components/Loader.svelte';
+	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 
 	export let isUser;
 	export let isMerchant;
 	export let isSigningUp;
 	let isLoading = false;
+
+	let firstName;
+	let lastName;
+	let email;
+	let password;
+
+	const handleSubmit = () => {
+		isLoading = true;
+		const signupFields = {
+			firstName,
+			lastName,
+			email,
+			password
+		};
+
+		signupUser(signupFields);
+	};
 </script>
 
-<!-- TODO: add signup functionality.-->
-<form class="flex flex-col">
+<!-- TODO: add form validation (required, etc.) -->
+<form on:submit|preventDefault={handleSubmit} class="flex flex-col">
 	<h1 class="text-2xl xs:text-4xl">User Signup</h1>
 	<label for="firstName">First Name</label>
-	<input type="text" id="firstName" name="firstName" placeholder="John" />
+	<input type="text" id="firstName" bind:value={firstName} name="firstName" placeholder="John" />
 	<label for="lastName">Last Name</label>
-	<input type="text" id="lastName" name="lastName" placeholder="Smith" />
+	<input type="text" id="lastName" bind:value={lastName} name="lastName" placeholder="Smith" />
 	<label for="email">Email Address</label>
-	<input type="email" id="email" name="email" placeholder="johnsmith@example.com" />
+	<input
+		type="email"
+		id="email"
+		bind:value={email}
+		name="email"
+		placeholder="johnsmith@example.com"
+	/>
 	<label for="password">Password</label>
-	<input type="password" id="password" name="password" placeholder="password" />
+	<input
+		type="password"
+		id="password"
+		bind:value={password}
+		name="password"
+		placeholder="password"
+	/>
 
 	<button type="submit" class="submit-button">
 		{#if isLoading}
 			<Loader />
 		{:else}
-			Login
+			Signup
 		{/if}
 	</button>
 </form>

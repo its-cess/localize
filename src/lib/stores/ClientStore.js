@@ -4,9 +4,8 @@ import baseUrl from "$lib/utils/baseUrl";
 
 export const client = writable({});
 
-//TODO: add Loader/Spinner component when waiting for login to occur.
+
 export const loginMerchant = async (loginInfo) => {
-  console.log("Merchant Login Running");
   const res = await fetch(`${baseUrl}/merchants/auth/signin`, {
     method: 'POST',
     headers: {
@@ -19,6 +18,7 @@ export const loginMerchant = async (loginInfo) => {
     const data = await res.json();
     client.set(data);
     // TODO: if successful, add user to store? set cookies/localStorage?
+    // TODO: set client based on user or merchant cookie returned.
     goto('/dashboard');
   } else {
     // TODO: add alert message component that shows that they couldn't be logged in.
@@ -28,7 +28,6 @@ export const loginMerchant = async (loginInfo) => {
 };
 
 export const loginUser = async (loginInfo) => {
-  console.log("User Login Running")
   const res = await fetch(`${baseUrl}/auth/signin`, {
     method: 'POST',
     headers: {
@@ -41,6 +40,7 @@ export const loginUser = async (loginInfo) => {
     const data = await res.json();
     client.set(data);
     // if successful,  set cookies/localStorage?
+    // TODO: set client based on user or merchant cookie returned.
     goto('/dashboard');
   } else {
     // add alert message component that shows that they couldn't be logged in.
@@ -49,9 +49,49 @@ export const loginUser = async (loginInfo) => {
   }
 };
 
-export const signupMerchant = () => {};
+export const signupMerchant = async (signupInfo) => {
+  const res = await fetch(`${baseUrl}/merchants/auth/signup`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(signupInfo)
+  });
 
-export const signupUser = () => {};
+  if (res.ok) {
+    const data = await res.json();
+    client.set(data);
+    // if successful,  set cookies/localStorage?
+    // TODO: set client based on user or merchant cookie returned.
+    goto('/dashboard');
+  } else {
+    // add alert message component that shows that they couldn't be logged in.
+    console.log('Could not log you in. Please try again.');
+    throw new Error(res.statusText);
+  }
+};
+
+export const signupUser = async (signupInfo) => {
+  const res = await fetch(`${baseUrl}/auth/signup`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(signupInfo)
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+    client.set(data);
+    // if successful,  set cookies/localStorage?
+    // TODO: set client based on user or merchant cookie returned.
+    goto('/dashboard');
+  } else {
+    // add alert message component that shows that they couldn't be logged in.
+    console.log('Could not log you in. Please try again.');
+    throw new Error(res.statusText);
+  }
+};
 
 export const logoutClient = () => {
   client.set(null);

@@ -22,6 +22,7 @@
 	};
 </script>
 
+<!-- TODO: add form validation (required, etc.) -->
 <form on:submit|preventDefault={handleSubmit} class="flex flex-col">
 	<h1 class="text-2xl xs:text-4xl">User Login</h1>
 	<label for="email">Email Address</label>

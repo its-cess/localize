@@ -1,55 +1,133 @@
 <script>
-	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
+	import { signupMerchant } from '$lib/stores/ClientStore';
 	import Loader from '$lib/components/Loader.svelte';
+	import ArrowUpRightSquare from '$lib/icons/ArrowUpRightSquare.svelte';
 
 	export let isUser;
 	export let isMerchant;
 	export let isSigningUp;
 	let isLoading = false;
+
+	let companyName;
+	let ownerFirstName;
+	let ownerLastName;
+	let email;
+	let password;
+	let address;
+	let city;
+	let postalCode;
+	let country;
+	let phoneNumber;
+
+	const handleSubmit = () => {
+		isLoading = true;
+		const signupFields = {
+			companyName,
+			ownerFirstName,
+			ownerLastName,
+			email,
+			password,
+			address,
+			city,
+			postalCode,
+			country,
+			phoneNumber
+		};
+
+		signupMerchant(signupFields);
+	};
 </script>
 
-<!--TODO: add signup functionality.-->
-<form class="flex flex-col">
+<!-- TODO: add form validation (required, etc.) -->
+<form on:submit|preventDefault={handleSubmit} class="flex flex-col">
 	<h1 class="text-2xl md:text-4xl">Merchant Registration</h1>
 	<div class="grid grid-cols-2 gap-8 mt-5">
 		<div class="info-section">
 			<h3>Owner Information</h3>
 			<label for="companyName">Company Name</label>
-			<input type="text" id="companyName" name="companyName" placeholder="My Business" />
+			<input
+				type="text"
+				id="companyName"
+				bind:value={companyName}
+				name="companyName"
+				placeholder="My Business"
+			/>
 
 			<label for="ownerFirstName">Owner First Name</label>
-			<input type="text" id="ownerFirstName" name="ownerFirstName" placeholder="John" />
+			<input
+				type="text"
+				id="ownerFirstName"
+				bind:value={ownerFirstName}
+				name="ownerFirstName"
+				placeholder="John"
+			/>
 
 			<label for="ownerLastName">Owner Last Name</label>
-			<input type="text" id="ownerLastName" name="ownerLastName" placeholder="Smith" />
+			<input
+				type="text"
+				id="ownerLastName"
+				bind:value={ownerLastName}
+				name="ownerLastName"
+				placeholder="Smith"
+			/>
 
 			<div class="info-section">
 				<h3>Account Information</h3>
 				<label for="email">Email Address</label>
-				<input type="email" id="email" name="email" placeholder="johnsmith@example.com" />
+				<input
+					type="email"
+					id="email"
+					bind:value={email}
+					name="email"
+					placeholder="johnsmith@example.com"
+				/>
 
 				<label for="password">Password</label>
-				<input type="password" id="password" name="password" placeholder="password" />
+				<input
+					type="password"
+					id="password"
+					bind:value={password}
+					name="password"
+					placeholder="password"
+				/>
 			</div>
 		</div>
 
 		<div class="info-section">
 			<h3>Bussiness Information</h3>
 			<label for="address">Street Address</label>
-			<input type="text" id="address" name="address" placeholder="123 Main Street" />
+			<input
+				type="text"
+				id="address"
+				bind:value={address}
+				name="address"
+				placeholder="123 Main Street"
+			/>
 
 			<label for="city">City</label>
-			<input type="text" id="city" name="city" placeholder="Toronto" />
+			<input type="text" id="city" bind:value={city} name="city" placeholder="Toronto" />
 
 			<label for="postalCode">Postal Code</label>
-			<input type="number" id="postalCode" name="postalCode" placeholder="123456" />
+			<input
+				type="number"
+				id="postalCode"
+				bind:value={postalCode}
+				name="postalCode"
+				placeholder="123456"
+			/>
 
 			<!-- Make Country a Dropdown Picker -->
 			<label for="country">Country</label>
-			<input type="text" id="country" name="country" placeholder="Canada" />
+			<input type="text" id="country" bind:value={country} name="country" placeholder="Canada" />
 
 			<label for="phoneNumber">Phone Number</label>
-			<input type="number" id="phoneNumber" name="phoneNumber" placeholder="(123) 456-7890" />
+			<input
+				type="number"
+				id="phoneNumber"
+				bind:value={phoneNumber}
+				name="phoneNumber"
+				placeholder="(123) 456-7890"
+			/>
 		</div>
 	</div>
 	<div class="flex justify-end">
