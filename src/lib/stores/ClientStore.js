@@ -4,7 +4,6 @@ import baseUrl from "$lib/utils/baseUrl";
 
 export const client = writable({});
 
-
 export const loginMerchant = async (loginInfo) => {
   const res = await fetch(`${baseUrl}/merchants/auth/signin`, {
     method: 'POST',
@@ -19,7 +18,7 @@ export const loginMerchant = async (loginInfo) => {
     client.set(data);
     // TODO: if successful, add user to store? set cookies/localStorage?
     // TODO: set client based on user or merchant cookie returned.
-    goto('/dashboard');
+    goto('/merchant-dashboard');
   } else {
     // TODO: add alert message component that shows that they couldn't be logged in.
     console.log('Could not log you in. Please try again.');
@@ -41,7 +40,7 @@ export const loginUser = async (loginInfo) => {
     client.set(data);
     // if successful,  set cookies/localStorage?
     // TODO: set client based on user or merchant cookie returned.
-    goto('/dashboard');
+    goto('/user-dashboard');
   } else {
     // add alert message component that shows that they couldn't be logged in.
     console.log('Could not log you in. Please try again.');
@@ -63,7 +62,7 @@ export const signupMerchant = async (signupInfo) => {
     client.set(data);
     // if successful,  set cookies/localStorage?
     // TODO: set client based on user or merchant cookie returned.
-    goto('/dashboard');
+    goto('/merchant-dashboard');
   } else {
     // add alert message component that shows that they couldn't be logged in.
     console.log('Could not log you in. Please try again.');
@@ -85,7 +84,7 @@ export const signupUser = async (signupInfo) => {
     client.set(data);
     // if successful,  set cookies/localStorage?
     // TODO: set client based on user or merchant cookie returned.
-    goto('/dashboard');
+    goto('/user-dashboard');
   } else {
     // add alert message component that shows that they couldn't be logged in.
     console.log('Could not log you in. Please try again.');
